@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/rpmcmurphy/programming-notetaker.git">
-    <img src="public/images/research-notes.png?raw=true" alt="Programming notetaker logo" width="80" height="80">
+    <img src="public/images/programming-notes-logo.png?raw=true" alt="Programming notetaker logo" width="80" height="80">
   </a>
 
 <h3 align="center">Take notes, save code-snippets and search them back for later use conveniently.</h3>
@@ -43,7 +43,7 @@
 
 ## About The Project
 
-![Research notetaker](public/images/research-notes.jpg)
+![Research notetaker](public/images/programming-notes.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
