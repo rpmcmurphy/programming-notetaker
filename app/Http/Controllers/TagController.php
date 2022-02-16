@@ -12,7 +12,7 @@ class TagController extends Controller
     public function index()
     {
         // return all tags
-        $tags = Tag::all();
+        $tags = Tag::orderBy('name')->get();
         return view('tags.index', ['tags' => $tags]);
     }
 
@@ -29,10 +29,15 @@ class TagController extends Controller
             'tag_name' => 'required|min:3'
         ]);
 
+        // Find if exists
+        $tag = Tag::where('name', $request->tag_name)->first();
+
+        if ($tag) {
+            return Redirect::route('tags.index')->with('message', 'Tag already exists.');
+        }
+
         $tag = new Tag();
-
         $tag->name = $request->tag_name;
-
         $tag->save();
 
         return Redirect::route('tags.index')->with('message', 'Your tag has been created');
@@ -51,16 +56,21 @@ class TagController extends Controller
 
     public function update(Request $request)
     {
-
         // Update a tag
         $this->validate($request, [
             'tag_name' => 'required|max:255'
         ]);
+        
+        // Find if exists
+        $existing_tag = Tag::where('name', $request->tag_name)->first();
+
+        if ($existing_tag && $existing_tag->id != $request->id) {
+            return Redirect::route('tags.index')->with('message', 'Tag already exists.');
+        }
 
         $tag = Tag::where('id', $request->id)->firstOrFail();
         $tag->name = $request->input('tag_name');
         $tag->save();
-
 
         return Redirect::route('tags.index')->with('message', 'Your tag has been updated');
     }

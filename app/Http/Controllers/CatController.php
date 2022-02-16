@@ -12,7 +12,7 @@ class CatController extends Controller
     public function index()
     {
         // return all cats
-        $cats = Cat::all();
+        $cats = Cat::orderBy('name')->get();
         return view('cats.index', ['cats' => $cats]);
     }
 
@@ -29,10 +29,15 @@ class CatController extends Controller
             'cat_name' => 'required|min:3'
         ]);
 
+        // Find if exists
+        $existing_cat = Cat::where('name', $request->cat_name)->first();
+
+        if ($existing_cat) {
+            return Redirect::route('cats.index')->with('message', 'Category already exists.');
+        }
+
         $cat = new Cat();
-
         $cat->name = $request->cat_name;
-
         $cat->save();
 
         return Redirect::route('cats.index')->with('message', 'Your category has been created');
@@ -56,6 +61,13 @@ class CatController extends Controller
         $this->validate($request, [
             'cat_name' => 'required|max:255'
         ]);
+
+        // Find if exists
+        $existing_cat = Cat::where('name', $request->cat_name)->first();
+
+        if ($existing_cat && $existing_cat->id != $request->id) {
+            return Redirect::route('cats.index')->with('message', 'Category already exists.');
+        }
 
         $cat = Cat::where('id', $request->id)->firstOrFail();
         $cat->name = $request->input('cat_name');

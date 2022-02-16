@@ -18,8 +18,8 @@ class NoteController extends Controller
     {
         // return all notes
         $notes = Note::orderBy('created_at', 'DESC')->paginate(10);
-        $cats = Cat::all();
-        $tags = Tag::all();
+        $cats = Cat::orderBy('name')->get();
+        $tags = Tag::orderBy('name')->get();
 
         return view('notes.index', ['notes' => $notes, 'cats' => $cats, 'tags' => $tags]);
     }
@@ -28,8 +28,8 @@ class NoteController extends Controller
     {
         // cat create form 
 
-        $cats = Cat::all();
-        $tags = Tag::all();
+        $cats = Cat::orderBY('name')->get();
+        $tags = Tag::orderBY('name')->get();
         return view('notes.create', ['cats' => $cats, 'tags' => $tags]);
     }
 
@@ -44,6 +44,13 @@ class NoteController extends Controller
             return redirect('notes/create')
                 ->withErrors($validator)
                 ->withInput();
+        }
+
+        // Find if exists
+        $existing_note = Note::where('note_name', $request->note_name)->first();
+
+        if ($existing_note) {
+            return Redirect::route('notes.index')->with('message', 'Note already exists.');
         }
 
         $notes = new Note();
@@ -90,8 +97,8 @@ class NoteController extends Controller
     public function show($id)
     {
         // Show note
-        $cats = Cat::all();
-        $tags = Tag::all();
+        $cats = Cat::orderBy('name')->get();
+        $tags = Tag::orderBy('name')->get();
         $notes = Note::with(['cats', 'tags'])->findOrFail($id);
 
         return view('notes.show', ['notes' => $notes, 'cats' => $cats, 'tags' => $tags]);
@@ -107,6 +114,13 @@ class NoteController extends Controller
         $this->validate($request, [
             'note_name' => 'required|min:3'
         ]);
+
+        // Find if exists
+        $existing_note = Note::where('note_name', $request->note_name)->first();
+
+        if ($existing_note && $existing_note->id != $request->id) {
+            return Redirect::route('notes.index')->with('message', 'Note already exists.');
+        }
 
         $notes = Note::where('id', $request->id)->firstOrFail();
 
@@ -224,8 +238,8 @@ class NoteController extends Controller
     {
         $term = $request->term;
 
-        $cats = Cat::all();
-        $tags = Tag::all();
+        $cats = Cat::orderBy('name')->get();
+        $tags = Tag::orderBy('name')->get();
 
         $cat = $request->cat;
         $tag = $request->tag;
