@@ -17,9 +17,9 @@
     <div class="col-12 col-md-6">
         <ul class="list-group">
             @if(count($cats) > 0)
-                @foreach($cats as $topic)
+                @foreach($cats as $cat)
                     <li class="list-group-item">
-                        <a href="{{ route('cats.show', $topic->id) }}" class="">{{ $topic->name }}</a>
+                        <a href="{{ route('cats.show', $cat->id) }}" class="">{{ $cat->name }}</a>
                     </li>
                 @endforeach
             @else

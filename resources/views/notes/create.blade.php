@@ -10,6 +10,16 @@
                     {{ $message }}
                 </div>
             @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </div>
     <div class="row">
@@ -85,12 +95,12 @@
             $("#cat_ids").select2({
                 multiple: true,
                 tags: true,
-                placeholder: "Select topic",
+                placeholder: "Select category",
             });
             $("#tag_ids").select2({
                 multiple: true,
                 tags: true,
-                placeholder: "Select topic",
+                placeholder: "Select tag",
             });
         });
     </script>

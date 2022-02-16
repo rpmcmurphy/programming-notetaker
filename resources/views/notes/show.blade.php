@@ -139,15 +139,15 @@
                     Delete
                 </button>
             </form>
+        </div>
+    </div>
 
-            <hr>
+    <hr>
 
-            <div class="conatiner">
-                <div class="row">
-                    <div class="col-md-12">
-                        <pre><code class="language-{{ $notes->note_lang }}">{{ $notes->note_codes }}</code></pre>
-                    </div>
-                </div>
+    <div class="conatiner">
+        <div class="row">
+            <div class="col-md-12">
+                <pre><code class="language-{{ $notes->note_lang }}">{{ $notes->note_codes }}</code></pre>
             </div>
         </div>
     </div>

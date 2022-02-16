@@ -10,11 +10,11 @@
                 @csrf
                 <div class="form-group mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="tag-name">
-                        Topic name
+                        Tag name
                     </label>
                     <input
                         class="form-control"
-                        id="tag-name" type="text" name="tag_name" placeholder="Topic name">
+                        id="tag-name" type="text" name="tag_name" placeholder="Tag name">
                 </div>
                 <div class="flex items-center justify-between">
                     <input class="btn btn-primary" type="submit" placeholder="Submit">

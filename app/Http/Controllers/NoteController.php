@@ -7,9 +7,9 @@ use App\Models\Tag;
 use App\Models\Note;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
@@ -36,9 +36,15 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         // Store a note
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'note_name' => 'required|min:3',
         ]);
+
+        if ($validator->fails()) {
+            return redirect('notes/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $notes = new Note();
 
@@ -252,6 +258,7 @@ class NoteController extends Controller
             $notes->where(function ($query) use ($term) {
                 $query->where('note_name', 'LIKE', '%' . $term . '%');
                 $query->orWhere('note_text', 'LIKE', '%' . $term . '%');
+                $query->orWhere('note_codes', 'LIKE', '%' . $term . '%');
                 $query->orWhere('links', 'LIKE', '%' . $term . '%');
             });
         }

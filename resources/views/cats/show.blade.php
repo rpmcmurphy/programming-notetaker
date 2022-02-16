@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-{{-- @section('title', 'Topic detail') --}}
+{{-- @section('title', 'Cat detail') --}}
 
 @section('content')
     <div class="row">
@@ -15,7 +15,7 @@
                 @csrf
                 <div class="form-group mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="category-name">
-                        Topic name
+                        Category name
                     </label>
                     <input class="form-control" id="category-name" type="hidden" name="id" value="{{ $cat->id }}">
                     <input class="form-control" id="category-name" type="text" name="cat_name" value="{{ $cat->name }}" placeholder="{{ $cat->name }}">

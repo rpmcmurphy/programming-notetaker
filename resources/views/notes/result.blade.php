@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div class="form-group mb-3">
-                <input type="text" class="form-control" name="term" id="term" placeholder="Search by text, topic">
+                <input type="text" class="form-control" name="term" id="term" placeholder="Search by text, category, tag">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
