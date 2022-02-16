@@ -147,9 +147,9 @@ class NoteController extends Controller
     {
         $note_id = $request->note_id;
         $file_link = $request->file_link;
-
+        
         $notes = Note::where('id', $note_id)->firstOrFail();
-
+        
         $files_images = json_decode($notes->files_images);
 
         $key = array_search($file_link, $files_images);

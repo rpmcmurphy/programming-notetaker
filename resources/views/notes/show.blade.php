@@ -104,7 +104,7 @@
                                             <div class="d-flex flex-wrap justify-content-between w-100 mt-auto">
                                                 <a class="btn btn-info btn-small mr-1 mb-3" href="{{ route('download', base64_encode('storage/' . $file)
                                                 ) }}">Downlaod</a>
-                                                <button class="btn btn-danger btn-small mb-3 delete-image" data-detail_id="{{ $notes->id }}" data-file_link="{{ $file }}">Delete</button>
+                                                <button class="btn btn-danger btn-small mb-3 delete-image" data-note_id="{{ $notes->id }}" data-file_link="{{ $file }}">Delete</button>
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@
             $('.delete-image').click(function(e) {
                 e.preventDefault();
 
-                var detail_id = $(this).data('detail_id');
+                var note_id = $(this).data('note_id');
                 var file_link = $(this).data('file_link');
 
                 var that = $(this);
@@ -180,7 +180,7 @@
                     url: '{{ route('notes.delete_file') }}',
                     type: 'POST',
                     data: {
-                        detail_id: detail_id,
+                        note_id: note_id,
                         file_link: file_link,
                         _token: '{{ csrf_token() }}'
                     },
