@@ -78,7 +78,7 @@
                         Note language
                     </label>
                     <input class="form-control" id="note-lang" type="text" name="note_lang" value="{{ $notes->note_lang }}" 
-                        placeholder="{{ $notes->note_lang }}">
+                        placeholder="Note code language, i.e, javascript">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="links">

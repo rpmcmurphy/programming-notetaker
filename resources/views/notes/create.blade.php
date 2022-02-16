@@ -69,6 +69,12 @@
                     <textarea class="form-control" name="note_codes" id="note_codes" cols="30" rows="10" placeholder="Note codes"></textarea>
                 </div>
                 <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="note-lang">
+                        Note language
+                    </label>
+                    <input class="form-control" id="note-lang" type="text" name="note_lang" placeholder="Note code language, i.e, javascript">
+                </div>
+                <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="links">
                         Links
                     </label>
