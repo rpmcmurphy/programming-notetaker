@@ -133,7 +133,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@ParbezRipon](https://twitter.com/ParbezRipon) - rparbez@protonmail.com
+[@ParbezRipon](https://twitter.com/ParbezRipon)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
