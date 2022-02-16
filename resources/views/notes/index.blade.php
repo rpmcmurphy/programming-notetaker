@@ -21,7 +21,7 @@
             <div class="form-group mb-3">
                 <label for="search">Categories</label>
                 <select name="cat" id="cat" class="form-control">
-                    {{-- <option value="">Select categories</option> --}}
+                    <option value="">Select categories</option>
                     @foreach ($cats as $cat)
                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @endforeach
@@ -30,14 +30,14 @@
             <div class="form-group mb-3">
                 <label for="search">Tags</label>
                 <select name="tag" id="tag" class="form-control">
-                    {{-- <option value="">Select tags</option> --}}
+                    <option value="">Select tags</option>
                     @foreach ($tags as $tag)
                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group mb-3">
-                <input type="text" class="form-control" name="term" id="term" placeholder="Search by text, category">
+                <input type="text" class="form-control" name="term" id="term" placeholder="Search by text, category, tag">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
     </div>
