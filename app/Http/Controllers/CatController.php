@@ -84,6 +84,6 @@ class CatController extends Controller
         $cat = Cat::find($id);
         $cat->delete();
 
-        return Redirect::route('cats.index')->with('message', $cat->name . ' has been created');
+        return Redirect::route('cats.index')->with('message', $cat->name . ' has been deleted.');
     }
 }
