@@ -18,11 +18,11 @@
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="note-name">
-                        note name
+                        Note name
                     </label>
                     <input
                         class="form-control"
-                        id="note-name" type="text" name="note_name" placeholder="note name">
+                        id="note-name" type="text" name="note_name" placeholder="Note name">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="cat_ids">

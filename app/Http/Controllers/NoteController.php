@@ -197,6 +197,20 @@ class NoteController extends Controller
         $note = Note::find($id);
         $note->delete();
 
+        if($note) {
+            $files_images = json_decode($note->files_images);
+
+            if ($files_images) {
+                foreach ($files_images as $file) {
+                    $full_image_path = public_path('storage/' . $file);
+
+                    if (File::exists($full_image_path)) {
+                        File::delete($full_image_path);
+                    }
+                }
+            }
+        }
+
         return Redirect::route('notes.index')->with('message', $note->note_name . ' has been deleted.');
     }
 
