@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
 
     <link href="{{ asset('css/prism.css') }}" rel="stylesheet" />
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
@@ -79,6 +80,7 @@
     </div>{{-- ./container --}}
 
     <script src="{{ asset('js/prism.js') }}"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
     @yield('scripts')

@@ -60,7 +60,8 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="note_text">
                         Note text
                     </label>
-                    <textarea class="form-control" name="note_text" id="note_text" cols="30" rows="10" placeholder="Note text"></textarea>
+                    <textarea class="form-control d-none" name="note_text" id="note_text" cols="30" rows="10" placeholder="Note text"></textarea>
+                    <div id="editor-container"></div>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="note_codes">

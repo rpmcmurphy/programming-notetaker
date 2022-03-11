@@ -29,7 +29,7 @@
                 <a href="{{ route('notes.index') }}" class="text-muted text-small d-block mx-2">Back to list</a>
             </h5>
 
-            <form class="bg-white px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('notes.update', $notes->id) }}" enctype="multipart/form-data">
+            <form class="bg-white px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('notes.update', $notes->id) }}" id="editor-form" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="note-name">
@@ -65,7 +65,8 @@
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="note_text">
                         Note text
                     </label>
-                    <textarea class="form-control" name="note_text" id="note_text" cols="30" rows="10" placeholder="Note text">{{ $notes->note_text }}</textarea>
+                    <textarea class="form-control d-none" name="note_text" id="note_text" cols="30" rows="10" placeholder="Note text">{{ $notes->note_text }}</textarea>
+                    <div id="editor-container">{!! $notes->note_text !!}</div>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="note_codes">
